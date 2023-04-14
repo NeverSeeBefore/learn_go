@@ -60,4 +60,20 @@ func main() {
 	// var testSlice = &[]string{"A", "B", "C"}
 	// fmt.Println(testSlice, testSlice[0]) // 报错
 
+	// 8. new 也可以分配内存空间，但是基本用不到
+	// new 出老的指针，其只想的值为对应零值
+	var a *int
+	a = new(int)
+	fmt.Println("new a", *a)
+	*a = 100
+	fmt.Println("new a", *a)
+
+	// 9. make 只能初始化 slice、map、channel
+	var b = new(map[string]string)
+	fmt.Println("b:", *b)
+	// (*b)["aaa"] = "hello" // 报错，因为使用 new 初始化 map，并没有分配空间
+	*b = make(map[string]string)
+	(*b)["aaa"] = "hello" // hello
+	fmt.Println("b:", *b)
+
 }
