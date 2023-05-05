@@ -1,0 +1,7 @@
+通过file.WriteString 写入内容
+第二行内容
+通过file.Write 写入内容
+aaa通过file.WriteString 写入内容
+第二行内容
+通过file.Write 写入内容
+aaa
