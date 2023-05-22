@@ -1,0 +1,67 @@
+{{define "admin/index.html"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.title}}</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+</head>
+
+<body>
+    {{ template "public/pageHeader.html" .}}
+    <h2>admin home</h2>
+    <h3>全部数据</h3>
+    <div>{{.}}</div>
+    <h3>变量</h3>
+    {{$t := .title}}
+    <br>
+    <div>{{ $t }}</div>
+    <div>{{ $t }}</div>
+    {{$t2 := .title}}
+    <div>{{ $t2 }}</div>
+    <h3>比较</h3>
+    <div>分数 {{ .score }}</div>
+    <div>
+        {{if ge .score 80}}
+        <span>优秀</span>
+        {{else if ge .score 60}}
+        <span> 及格 </span>
+        {{else}}
+        <span>不及格</span>
+        {{end}}
+    </div>
+    <h3>循环</h3>
+    <ul>
+        {{range $key, $value := .hobby}}
+        <li>{{$key}}: {{$value}}</li>
+        {{end}}
+    </ul>
+    <h3>with</h3>
+    <p>
+        title: {{.news.title}}
+        content: {{.news.content}}
+    </p>
+    <p>
+        {{with .news}}
+        <span>title: {{.title}}</span>
+        <span>content: {{.content}}</span>
+        {{end}}
+    </p>
+
+    <h3>预定义模板函数</h3>
+    <div>
+        <div>len  {{len .title}}</div>
+    </div>
+    <h3>自定义模板函数</h3>
+    <div>date:{{.date}}</div>
+    <div>UnixToTime: {{UnixToTime .date}}</div>
+
+    <h3>引入静态资源</h3>
+    <img src="/static/img/AA-5.png" alt="">
+</body>
+
+</html>
+{{end}}

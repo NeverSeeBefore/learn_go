@@ -1,0 +1,38 @@
+{{define "index.html"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.title}}</title>
+</head>
+
+<body>
+    <h1>{{.title}}</h1>
+    <div>username: {{.username}}</div>
+    <div>age: {{.age}}</div>
+
+    <form action="/api/user" method="post" target="iframe">
+        <div>
+            <input type="text" name="username" label="用户名">
+        </div>
+        <div>
+            <input type="text" name="password">
+        </div>
+        <div>
+            <input type="text" name="age">
+        </div>
+        <div>
+            <button type="submit">提交</button>
+        </div>
+    </form>
+    第一次发现，form提交数据后会刷新页面
+    <iframe id="iframe" name="iframe" style="display:none;"></iframe>
+
+
+</body>
+
+</html>
+{{end}}
