@@ -1,0 +1,72 @@
+{{ define "index" }}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.title}}</title>
+</head>
+
+<body>
+
+    <button class="button" onclick="getSession()">getSession</button>
+
+    <p>
+        <button onclick="getUser()">getUser</button>
+        <button onclick="putUser()">putUser</button>
+
+    </p>
+    <p>
+        <button onclick="getSession()">getSession</button>
+        <button onclick="putSession()">putSession</button>
+    </p>
+
+    <img src="/statics/img/AA-5.png" alt="">
+</body>
+<script>
+
+
+    function getUser() {
+        request('GET', '/api/user', null, function (response) {
+            console.log('get user', response);
+        })
+    }
+    function putUser() { 
+        const form = new FormData();
+        form.append('username', 'name');
+        request('PUT', '/api/user', form, function (response) {
+            console.log('get user', response);
+        })
+    }
+
+    function getSession() {
+        request('GET', '/api/session', null, function (response) {
+            console.log('getsession', response);
+        })
+    }
+
+    function putSession() {
+        const form = new FormData();
+        form.append('age', 99);
+        request('PUT', '/api/session', form, function (response) {
+            console.log('getsession', response);
+        })
+    }
+    function request(method, path, body, callback) {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                callback && callback(xhr.responseText);
+            }
+        }
+        xhr.open(method, path);
+        xhr.send(body);
+    }
+</script>
+
+</html>
+
+{{end}}

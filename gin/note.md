@@ -2,6 +2,7 @@
 
 - [go 简介](https://zhuanlan.zhihu.com/p/478076646)
 - [go 基础知识博客](https://www.seoooooo.com/cms/11280.html#toc_10)
+- [官方文档](https://gin-gonic.com/docs/examples/ascii-json/)
 
 ## 安装环境
 
