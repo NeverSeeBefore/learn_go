@@ -15,6 +15,6 @@ func init() {
 
 	DB, err = gorm.Open(mysql.Open(dns), &gorm.Config{})
 	if err != nil {
-		fmt.Println("数据库链接失败", err)
+		fmt.Println("数据库连接失败", err)
 	}
 }
